@@ -2,14 +2,35 @@
 
 不做特殊说明，都是CentOS操作系统下的命令。
 
-## Linux文件权限
+## Linux文件/目录权限
 
 ![](./img/linux-file-permission.jpg) 
+
+`x`: 对于目录而言，要有`x`可执行权限，才能`cd`进入到该目录
+
+
 
 ## 修改目录/文件权限
 
 ```bash
 chmod 777 dir_name // 777表示Owner, Group, Other对该文件或者目录都拥有可读、可写和可执行的权限
+```
+
+
+
+## 用户管理
+
+```bash
+# 添加用户
+useradd user_name
+# 设置密码
+passwd user_name
+# 查看用户信息
+id user_name
+# 查看当前用户
+whoami
+# 切换用户su: switch user
+su user_name
 ```
 
 
