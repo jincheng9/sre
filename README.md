@@ -51,3 +51,21 @@ firewall-cmd --permanent --add-port=80/tcp
 firewall-cmd --reload
 ```
 
+
+
+## 文件上传
+
+### 上传本地文件或目录到远程服务器
+
+```bash
+scp /path/to/file username@serverip:remote_dir
+scp -r local_dir username@serverip:remote_dir
+```
+
+### 从远程服务器下载文件或目录到本地
+
+```bash
+scp username@serverip:/path/to/file local_dir
+scp -r username@serverip:remote_dir local_dir
+```
+
