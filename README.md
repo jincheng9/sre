@@ -69,3 +69,12 @@ scp username@serverip:/path/to/file local_dir
 scp -r username@serverip:remote_dir local_dir
 ```
 
+
+
+## 查看磁盘空间的占用
+
+看当前目录下各个文件和文件夹的空间占用
+
+```bash
+du -hs * | sort -hr | head 
+```
