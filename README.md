@@ -78,3 +78,22 @@ scp -r username@serverip:remote_dir local_dir
 ```bash
 du -hs * | sort -hr | head 
 ```
+
+
+
+## OpenResty/Nginx
+
+### 查看OpenResty版本
+
+```bash
+$ resty -v
+$ which resty // 可以看resty命令在/usr/bin目录下
+```
+
+### Nginx安装位置
+
+主目录：`/usr/local/openresty/nginx`
+
+可执行文件目录：`/usr/local/openresty/nginx/sbin`
+
+配置文件目录：`/usr/local/openresty/nginx/conf`
