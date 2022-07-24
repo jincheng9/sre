@@ -103,3 +103,24 @@ $ which resty // 可以看resty命令在/usr/bin目录下
 可执行文件目录：`/usr/local/openresty/nginx/sbin`
 
 配置文件目录：`/usr/local/openresty/nginx/conf`
+
+## 隐藏openresty版本
+
+在nginx.conf的http段添加如下配置：
+
+```bash
+server_token off;
+```
+
+然后在命令行终端上执行如下命令，检查配置是否成功(在conf目录下操作的，所以用../sbin/nginx，这个根据实际所在目录调整即可)
+
+```bash
+../sbin/nginx -t
+```
+
+检查通过后，执行如下命令重新加载conf配置文件
+
+```bash
+./nginx -s reload
+```
+
