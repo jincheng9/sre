@@ -64,8 +64,8 @@ firewall-cmd --reload
 ### 上传本地文件或目录到远程服务器
 
 ```bash
-scp /path/to/file username@serverip:remote_dir
-scp -r local_dir username@serverip:remote_dir
+scp -P port /path/to/file username@serverip:remote_dir
+scp -P port -r local_dir username@serverip:remote_dir
 ```
 
 ### 从远程服务器下载文件或目录到本地
