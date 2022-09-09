@@ -124,3 +124,8 @@ server_token off;
 ./nginx -s reload
 ```
 
+
+
+## 添加路由
+
+https://blog.csdn.net/wangzhen209/article/details/77748107
