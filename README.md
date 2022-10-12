@@ -41,6 +41,20 @@ su user_name
 
 
 
+## 添加ssh public key
+
+比如你作为服务器管理员，要允许访问者通过test这个用户名，以ssh key的方式登录。
+
+那需要在`/home/test/.ssh/`目录下创建authorized_keys这个文件，把访问者的public key加入到authorized_keys文件里。
+
+```bash
+echo xx >> /home/test/.ssh/authorized_keys
+```
+
+**备注**：echo会往文件末尾追加，不会覆盖。
+
+
+
 ## 防火墙
 
 **注意**：修改了防火墙配置后，需要重启防火墙
