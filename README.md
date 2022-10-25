@@ -156,7 +156,7 @@ Nginx 的参数包括：
 * -V：显示 nginx 的版本号，编译环境信息以及编译时的参数。
 
 ```bash
-./sbin/nginx -t -c /usr/local/nginx/conf/nginx.conf
+./sbin/nginx -c ./conf/nginx.conf
 ```
 
 
