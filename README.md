@@ -149,10 +149,11 @@ nginx: configuration file /usr/local/openresty/nginx/conf/nginx.conf test is suc
 ## Nginx启动参数
 
 Nginx 的参数包括：
--c <path_to_config>：使用指定的配置文件而不是 conf 目录下的 nginx.conf。
--t：测试配置文件是否正确，。
--v：显示 nginx 版本号。
--V：显示 nginx 的版本号，编译环境信息以及编译时的参数。
+
+* -c <path_to_config>：使用指定的配置文件而不是 conf 目录下的 nginx.conf。
+* -t：测试配置文件是否正确，。
+* -v：显示 nginx 版本号。
+* -V：显示 nginx 的版本号，编译环境信息以及编译时的参数。
 
 ```bash
 ./sbin/nginx -t -c /usr/local/nginx/conf/nginx.conf
