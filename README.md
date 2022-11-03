@@ -54,7 +54,20 @@ echo xx >> /home/test/.ssh/authorized_keys
 **备注**：
 
 * echo后面如果用的是 >> 会往文件末尾追加，不会覆盖，追加内容会换行。
+
 * echo后面如果用的是 > 会覆盖文件内容，而不是往后追加内容。
+
+* 如果.ssh目录下没有authorized_keys，执行上面的echo命令后，会自动创建authorized_keys文件。
+
+* 有时候，把ssh public key加到用户目录下的~/.ssh/authorized_keys后，登录会提示用户密钥未注册之类的，需要设置.ssh目录和authorized_keys目录权限。
+
+  ```bash
+  chmod 700 ~/.ssh
+  
+  chmod 600 ~/.ssh/authorized_keys
+  ```
+
+  
 
 ## 防火墙
 
