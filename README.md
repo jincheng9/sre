@@ -59,6 +59,8 @@ echo xx >> /home/test/.ssh/authorized_keys
 
 * 如果.ssh目录下没有authorized_keys，执行上面的echo命令后，会自动创建authorized_keys文件。
 
+* 添加ssh publick key到~/.ssh/authorized_keys文件后，不用重启sshd，用户就可以通过public key登录到服务器了。修改了sshd的配置文件ssd_config，才需要重启sshd，也就是ssh server。
+
 * 有时候，把ssh public key加到用户目录下的~/.ssh/authorized_keys后，登录会提示用户密钥未注册之类的，需要设置.ssh目录和authorized_keys目录权限。
 
   ```bash
