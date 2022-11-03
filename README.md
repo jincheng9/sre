@@ -165,6 +165,8 @@ nginx: configuration file /usr/local/openresty/nginx/conf/nginx.conf test is suc
 
 **注意**：执行`nginx -t`命令的Linux用户，如果和nginx进程启动的用户不一样，那执行`nginx -t`命令后，会修改nginx目录下比如proxy_temp, client_body_temp等目录的所属用户为nobody，导致nginx worker进程访问proxy_temp和client_body_temp等目录的时候可能会出现权限问题，导致访问失败。要使用nginx worker进程启动用户去执行`nginx -t`命令。
 
+参考：https://blog.csdn.net/memory6364/article/details/86155978
+
 
 
 ## Nginx启动参数
