@@ -15,13 +15,26 @@
 
 `x`: 对于目录而言，要有`x`可执行权限，才能`cd`进入到该目录
 
+777表示Owner, Group, Other对该文件或者目录都拥有可读、可写和可执行的权限
 
 
-## 修改目录/文件权限
+
+## 修改目录所属用户和用户组
 
 ```bash
-chmod 777 dir_name // 777表示Owner, Group, Other对该文件或者目录都拥有可读、可写和可执行的权限
+chown -R user dir_name
+chown -R user:group dir_name
 ```
+
+## 修改目录的权限
+
+```bash
+chmod -R 755 dir_name
+```
+
+-R表示递归处理指定目录及其子目录下的所有文件，对目录使用-R，单独修改某个文件的所属用户/用户组以及修改某个文件的权限，不需要加-R。
+
+参考：https://www.runoob.com/linux/linux-command-manual.html
 
 
 
