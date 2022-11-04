@@ -9,6 +9,8 @@
 
 如果不做特殊说明，涉及shell命令的都是CentOS操作系统的命令。
 
+Linux命令大全：https://www.runoob.com/linux/linux-command-manual.html
+
 ## Linux文件/目录权限
 
 ![](./img/linux-file-permission.jpg) 
