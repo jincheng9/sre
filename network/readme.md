@@ -13,4 +13,10 @@
 route -p add 123.124.125.126 mask 255.255.255.0 192.168.10.1
 ```
 
-修改默认路由地址：https://blog.csdn.net/Season_hangzhou/article/details/18841981
+-p表示永久路由，重启机器或者系统也不会丢失该路由设置。
+
+References:
+
+* 修改默认路由地址：https://blog.csdn.net/Season_hangzhou/article/details/18841981
+
+* route命令手册：https://blog.csdn.net/wangzhen209/article/details/77748107
