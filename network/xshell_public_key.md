@@ -5,7 +5,7 @@
 服务器ssh登录有2种常用的方式：
 
 * 方式1：用户密码认证，登录时输入用户名和密码。
-* 方式2：公钥认证(Public Key User Authentication)，登录时提供用户名+私钥。公钥需要存储一份在服务器上该用户的`~/.ssh/authorized_keys`文件里。
+* 方式2：公钥认证(Public Key User Authentication)，登录时提供用户名+私钥。公钥需要存储一份在服务器上该用户的`~/.ssh/authorized_keys`文件里。如果是root用户，存储在`/root/.ssh/authorized_keys`文件里，如果是其它用户，存储在`/home/username/.ssh/authorized_keys`文件里。
 
 管理比较严格的公司，会按照方式2去设置服务器登录，禁止用方式1。
 
@@ -46,6 +46,13 @@
 ## 总结
 
 公钥认证是比用户名/密码登录更安全的方式，而且在服务器出现异常行为时，也方便追踪是哪个用户的操作。
+
+
+
+## 推荐阅读
+
+* [如何添加在服务器上给指定用户添加public key](https://github.com/jincheng9/sre#%E6%B7%BB%E5%8A%A0ssh-public-key)
+* [常用的服务器运维手册](https://github.com/jincheng9/sre)
 
 
 
