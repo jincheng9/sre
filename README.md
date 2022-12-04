@@ -121,7 +121,7 @@ scp username@serverip:/path/to/file local_dir
 scp -r username@serverip:remote_dir local_dir
 ```
 
-图省事可以直接用SFTP客户端来操作即可。
+图省事可以直接用XFTP客户端来操作即可。
 
 
 
@@ -201,8 +201,13 @@ Nginx 的参数包括：
 
 
 
-
-
 ## 添加路由
 
 https://blog.csdn.net/wangzhen209/article/details/77748107
+
+
+
+## Xshell and Xftp
+
+* [Xshell如何记住用户秘钥，不用每次登录时选择private key文件](./network/xshell_public_key.md)
+
