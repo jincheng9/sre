@@ -121,6 +121,8 @@ scp username@serverip:/path/to/file local_dir
 scp -r username@serverip:remote_dir local_dir
 ```
 
+图省事可以直接用SFTP客户端来操作即可。
+
 
 
 ## 查看磁盘空间的占用
