@@ -1,8 +1,9 @@
 # 运维手册
 
+* [Linux常用命令](#Linux常用命令)
+
 * [网络运维](./network/readme.md)
 * [存储运维](./storage/readme.md)
-* [Linux常用命令](#Linux常用命令)
 * [阿里云运维](./alicloud/readme.md)
 
 # Linux常用命令
