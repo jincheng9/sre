@@ -20,3 +20,9 @@ References:
 * 修改默认路由地址：https://blog.csdn.net/Season_hangzhou/article/details/18841981
 
 * route命令手册：https://blog.csdn.net/wangzhen209/article/details/77748107
+
+
+
+
+* [Xshell如何记住用户秘钥，不用每次登录时选择private key文件](./xshell_public_key.md)
+* [获取服务器的互联网IP地址](./internet-ip.md)
