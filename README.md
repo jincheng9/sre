@@ -137,6 +137,21 @@ du -hs * | sort -hr | head
 
 
 
+## 查看Linux操作系统版本
+
+命令：`lsb_release -a`。
+
+```bash
+# lsb_release -a
+LSB Version:	:core-4.1-amd64:core-4.1-noarch
+Distributor ID:	CentOS
+Description:	CentOS Linux release 7.9.2009 (Core)
+Release:	7.9.2009
+Codename:	Core
+```
+
+
+
 ## OpenResty/Nginx
 
 ### 查看OpenResty版本
