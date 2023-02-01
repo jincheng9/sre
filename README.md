@@ -63,6 +63,8 @@ su user_name
 
 比如你作为服务器管理员，要允许访问者通过test这个用户名，以ssh key的方式登录。
 
+创建用户参考上面的[用户管理](#用户管理)。
+
 那需要在`/home/test/.ssh/`目录下创建authorized_keys这个文件，把访问者的public key加入到authorized_keys文件里。
 
 ```bash
@@ -87,6 +89,12 @@ echo xx >> /home/test/.ssh/authorized_keys
   chmod 600 ~/.ssh/authorized_keys
   ```
 
+  同时确保该用户是.ssh目录和authorized_keys文件的owner。
+  
+  ```bash
+  chown -R test .ssh
+  ```
+  
   
 
 ## 防火墙
