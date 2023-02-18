@@ -108,6 +108,24 @@ echo xx >> /home/test/.ssh/authorized_keys
 rsync images/xxx.tar root@192.168.42.55:/root/images
 ```
 
+如果要下载某远程主机上的文件到本机上，则执行如下命令，表示把目标机器192.168.42.55的xxx.tar文件下载到本机的images目录下。
+
+```bash
+rsync  root@192.168.42.55:/root/images/xxx.tar images/
+```
+
+**注意**：如果执行rsync提示如下问题，则是由于本机的~/.ssh/id_rsa私钥文件权限过大，可以执行`chmod 600 id_rsa` 来解决。
+
+```bash
+Permissions 0644 for '/root/.ssh/id_rsa' are too open.
+It is required that your private key files are NOT accessible by others.
+This private key will be ignored.
+Load key "/root/.ssh/id_rsa": bad permissions
+Permission denied (publickey,gssapi-keyex,gssapi-with-mic).
+rsync: connection unexpectedly closed (0 bytes received so far) [sender]
+rsync error: unexplained error (code 255) at io.c(226) [sender=3.1.2]
+```
+
 
 
 ## 防火墙
