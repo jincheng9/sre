@@ -95,7 +95,20 @@ echo xx >> /home/test/.ssh/authorized_keys
   chown -R test .ssh
   ```
   
-  
+
+## rsync文件传输
+
+通过ssh key的方式传输文件的准备工作：
+
+1. 源机器上用户的.ssh目录下有id_rsa文件，该文件是私钥。
+2. 目标机器的.ssh/authorized_keys文件里放上源机器的ssh key公钥。
+3. 在源机器上执行如下命令即可，表示把源机器上的images目录下的xxx.tar文件上传到目标机器192.168.42.55的/root/images目录下。
+
+```bash
+rsync images/xxx.tar root@192.168.42.55:/root/images
+```
+
+
 
 ## 防火墙
 
