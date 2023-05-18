@@ -5,6 +5,7 @@
 * [网络运维](./network/readme.md)
 * [存储运维](./storage/readme.md)
 * [阿里云运维](./alicloud/readme.md)
+* [git命令](#Git命令)
 * [其它杂项](./other/readme.md)
 
 # Linux常用命令
@@ -266,4 +267,28 @@ https://blog.csdn.net/wangzhen209/article/details/77748107
 ## Xshell and Xftp
 
 * [Xshell如何记住用户秘钥，不用每次登录时选择private key文件](./network/xshell_public_key.md)
+
+
+
+# Git命令
+
+## 迁移repo A里某个指定分支到另外一个新repo B
+
+* Step 1: 在Gitlab创建一个新的空仓库B，里面不要添加README.md以及任何License和.gitignore文件。
+* Step 2: 按照如下命令操作即可。 
+
+```bash
+# 进入repo A目录，切换到指定分支
+$ cd repo_A
+$ git checkout target_branch
+
+# 上传repo A里的指定分支到repo B仓库
+$ git push git@repo_B:xx.git
+
+# 上传repo A里的所有分支到repo B仓库
+$ git push git@repo_B:xx.git --all
+
+# 上传repo A里的所有tags到repo B仓库
+$ git push git@repo_B:xx.git --tags
+```
 
