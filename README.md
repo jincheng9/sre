@@ -6,6 +6,7 @@
 * [存储运维](./storage/readme.md)
 * [阿里云运维](./alicloud/readme.md)
 * [git命令](#Git命令)
+* [Mac电脑相关](#Mac)
 * [其它杂项](./other/readme.md)
 
 # Linux常用命令
@@ -293,3 +294,13 @@ $ git push git@repo_B:xx.git --tags
 ```
 
 * https://blog.csdn.net/anniaxie/article/details/124122763
+
+
+
+# Mac
+
+Mac电脑如果需要远程访问windows电脑，可以安装如下这个软件：
+
+https://install.appcenter.ms/orgs/rdmacios-k2vy/apps/microsoft-remote-desktop-for-mac/distribution_groups/all-users-of-microsoft-remote-desktop-for-mac
+
+* 参考资料：https://zhuanlan.zhihu.com/p/460311929
