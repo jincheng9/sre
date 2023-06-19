@@ -47,8 +47,9 @@ chmod -R 755 dir_name
 ## 用户管理
 
 ```bash
-# 添加用户
-useradd user_name
+# 添加用户，使用-m会自动在/home目录下增加该用户的目录
+# 不使用-m创建用户的时候，在/home目录下不会自动增加该用户的目录
+useradd -m user_name 
 # 设置密码
 passwd user_name
 # 查看用户信息
