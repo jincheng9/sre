@@ -58,6 +58,8 @@ id user_name
 whoami
 # 切换用户su: switch user
 su user_name
+# 删除用户
+userdel user_name
 ```
 
 
