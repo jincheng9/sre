@@ -148,7 +148,13 @@ sshfs web@192.168.10.214:/home/web/share /home/test/
 
 * 第三步，在本机上操作，把第二步的命令一模一样复制到~/.bashrc文件里
 
-  
+注意：需要先在本机和目标机器上安装sshfs，命令为
+
+```bash
+yum install sshfs
+```
+
+
 
 ## 防火墙
 
