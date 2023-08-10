@@ -133,6 +133,23 @@ rsync error: unexplained error (code 255) at io.c(226) [sender=3.1.2]
 
 
 
+## 网络盘挂载
+
+场景：把IP为192.168.10.214的Linux服务器的/home/web/share挂载到本机的/home/test目录
+
+操作步骤：
+
+* 第一步，把本机生成的ssh public key放到192.168.10.214的web用户下的.ssh/authorized_keys文件里
+* 第二步，在本机执行如下命令：
+
+```bash
+sshfs web@192.168.10.214:/home/web/share /home/test/
+```
+
+* 第三步，在本机上操作，把第二步的命令一模一样复制到~/.bashrc文件里
+
+  
+
 ## 防火墙
 
 **注意**：修改了防火墙配置后，需要重启防火墙
@@ -302,7 +319,7 @@ $ git push git@repo_B:xx.git --tags
 
 # Mac
 
-Mac电脑如果需要远程访问windows电脑，可以安装如下这个软件：
+Mac电脑如果需要远程访问windows电脑，可以安装如下这个软件或者使用todesk等远程控制软件：
 
 https://install.appcenter.ms/orgs/rdmacios-k2vy/apps/microsoft-remote-desktop-for-mac/distribution_groups/all-users-of-microsoft-remote-desktop-for-mac
 
