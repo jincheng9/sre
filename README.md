@@ -8,6 +8,7 @@
 * [git命令](#Git命令)
 * [Mac电脑相关](#Mac)
 * [MySQL操作](#MySQL操作)
+* [Docker操作](#Docker)
 * [其它杂项](./other/readme.md)
 
 # Linux常用命令
@@ -389,6 +390,16 @@ https://install.appcenter.ms/orgs/rdmacios-k2vy/apps/microsoft-remote-desktop-fo
       Email varchar(255),
       PRIMARY KEY (CustomerID)
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  ```
+
+  
+
+## Docker
+
+* Docker安装
+
+  ```bash
+  curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun
   ```
 
   
