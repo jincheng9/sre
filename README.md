@@ -7,6 +7,7 @@
 * [阿里云运维](./alicloud/readme.md)
 * [git命令](#Git命令)
 * [Mac电脑相关](#Mac)
+* [MySQL操作](#MySQL操作)
 * [其它杂项](./other/readme.md)
 
 # Linux常用命令
@@ -60,6 +61,12 @@ whoami
 su user_name
 # 删除用户
 userdel user_name
+# 添加用户到sudo用户组，以下命令适用于centos系统，在 CentOS 中，wheel 用户组的成员具有 sudo 权限：
+usermod -aG wheel username
+# 使用 id 命令来验证用户是否已经被添加到 wheel 用户组：
+id username
+# 为了执行sudo命令时不用输入密码，需要在 /etc/sudoers 文件中添加一行数据
+username ALL=(ALL) NOPASSWD: ALL
 ```
 
 
@@ -330,3 +337,49 @@ Mac电脑如果需要远程访问windows电脑，可以安装如下这个软件�
 https://install.appcenter.ms/orgs/rdmacios-k2vy/apps/microsoft-remote-desktop-for-mac/distribution_groups/all-users-of-microsoft-remote-desktop-for-mac
 
 * 参考资料：https://zhuanlan.zhihu.com/p/460311929
+
+
+
+## MySQL操作
+
+* 创建用户
+
+  ```sql
+  ## 该用户只能从数据库所在机器访问数据库
+  CREATE USER 'username'@'localhost' IDENTIFIED BY 'password';
+  ## 该用户只能从192.168.10.214这台机器访问数据库
+  CREATE USER 'username'@'192.168.10.214' IDENTIFIED BY 'password';
+  ## 该用户可以从任意机器机器访问数据库
+  CREATE USER 'username'@'%' IDENTIFIED BY 'password';
+  ## 该用户可以从任意机器机器访问数据库
+  CREATE USER 'username' IDENTIFIED BY 'password';
+  ```
+
+* 给数据库用户赋权限
+
+  ```sql
+  GRANT SELECT, INSERT, UPDATE, DELETE ON mydatabase.* TO 'testuser'@'localhost';
+  FLUSH PRIVILEGES;
+  ```
+
+* 创建DB
+
+  ```sql
+  CREATE DATABASE mydb
+  CHARACTER SET utf8mb4
+  COLLATE utf8mb4_general_ci;
+  ```
+
+* 创建table
+
+  ```sql
+  CREATE TABLE Customers (
+      CustomerID int NOT NULL AUTO_INCREMENT,
+      FirstName varchar(255),
+      LastName varchar(255),
+      Email varchar(255),
+      PRIMARY KEY (CustomerID)
+  ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  ```
+
+  
