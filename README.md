@@ -342,6 +342,15 @@ https://install.appcenter.ms/orgs/rdmacios-k2vy/apps/microsoft-remote-desktop-fo
 
 ## MySQL操作
 
+* 机器上安装mysql client
+
+  ```bash
+  # centos为例，安装后就可以用mysql命令去连接mysql数据库了
+  yum install mysql
+  ```
+
+  
+
 * 创建用户
 
   ```sql
