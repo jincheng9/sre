@@ -102,7 +102,9 @@ echo xx >> /home/test/.ssh/authorized_keys
   chmod 600 ~/.ssh/authorized_keys
   ```
 
-  同时确保该用户是.ssh目录和authorized_keys文件的owner。
+  注意：**必须确保该用户是.ssh目录和authorized_keys文件的owner，否则还是不能登录。**
+  
+  **建议切换到对应的登录用户，然后使用该用户来创建.ssh目录和authorized_keys文件**)。
   
   ```bash
   chown -R test .ssh
@@ -299,6 +301,16 @@ https://blog.csdn.net/wangzhen209/article/details/77748107
 
 
 
+## crontab定时任务
+
+CentOS系统，crontab的执行日志在/var/log/cron文件里
+
+```bash
+grep 'check_update_time.py' /var/log/cron
+```
+
+
+
 ## Xshell and Xftp
 
 * [Xshell如何记住用户秘钥，不用每次登录时选择private key文件](./network/xshell_public_key.md)
@@ -403,3 +415,4 @@ https://install.appcenter.ms/orgs/rdmacios-k2vy/apps/microsoft-remote-desktop-fo
   ```
 
   
+
