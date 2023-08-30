@@ -62,12 +62,16 @@ whoami
 su user_name
 # 删除用户
 userdel user_name
+
 # 添加用户到sudo用户组，以下命令适用于centos系统，在 CentOS 中，wheel 用户组的成员具有 sudo 权限：
 usermod -aG wheel username
+
 # 使用 id 命令来验证用户是否已经被添加到 wheel 用户组：
 id username
+
 # 为了执行sudo命令时不用输入密码，需要在 /etc/sudoers 文件中添加一行数据
-whell ALL=(ALL) NOPASSWD: ALL # NoPASSWD可以让执行sudo的时候不用输入密码
+%whell ALL=(ALL) NOPASSWD: ALL # NoPASSWD可以让执行sudo的时候不用输入密码
+
 # 如果没有通过usermod -aG wheel username把用户加到sudo用户组的话，可以直接往/etc/sudoers里增加以下内容：
 username ALL=(ALL) NOPASSWD: ALL # 指定特定用户拥有sudo权限
 ```
