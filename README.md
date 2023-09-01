@@ -188,7 +188,41 @@ firewall-cmd --permanent --add-port=80/tcp
 firewall-cmd --reload
 ```
 
+### 关闭防火墙
 
+以下是如何使用firewall-cmd命令关闭防火墙的步骤:
+
+1. 打开终端。
+
+2. 输入以下命令来关闭防火墙：
+
+   ```bash
+   sudo firewall-cmd --state
+   ```
+
+   这个命令会显示出防火墙的当前状态，如果显示running，说明防火墙正在运行。
+
+3. 如果防火墙正在运行，输入以下命令来停止防火墙：
+
+   ```bash
+   sudo systemctl stop firewalld
+   ```
+
+4. 在防火墙已停止的情况下，如果你想要禁止防火墙在系统启动时启动，你可以运行以下命令：
+
+   ```bash
+   sudo systemctl disable firewalld
+   ```
+
+5. 你可以再次使用以下命令来检查防火墙的状态，确认防火墙已关闭：
+
+   ```bash
+   sudo firewall-cmd --state
+   ```
+
+   这次应该返回not running，说明防火墙已经关闭。
+
+此时，你的防火墙就已经关闭并且在下次启动时也不会自动运行。
 
 ## 文件/目录上传和下载
 
