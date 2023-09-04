@@ -256,7 +256,14 @@ du -hs * | sort -hr | head
 
 ## 查看Linux操作系统版本
 
-命令：`lsb_release -a`。
+* 方法1：centos系统，执行以下命令：
+
+```bash
+$ cat /etc/centos-release
+CentOS Linux release 7.9.2009 (Core)
+```
+
+* 方法2：命令：`lsb_release -a`。
 
 ```bash
 # lsb_release -a
@@ -267,7 +274,11 @@ Release:	7.9.2009
 Codename:	Core
 ```
 
+如果提示command not found，那先安装redhat-lsb包，命令为`yum install redhat-lsb`。
 
+
+
+## 
 
 ## OpenResty/Nginx
 
