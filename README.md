@@ -467,7 +467,7 @@ https://install.appcenter.ms/orgs/rdmacios-k2vy/apps/microsoft-remote-desktop-fo
 
   
 
-## 硬件留痕信息
+## CTP硬件留痕信息
 
 |                | Windows系统 | 参考命令                                                     |
 | -------------- | ----------- | ------------------------------------------------------------ |
