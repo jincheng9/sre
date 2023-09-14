@@ -467,3 +467,26 @@ https://install.appcenter.ms/orgs/rdmacios-k2vy/apps/microsoft-remote-desktop-fo
 
   
 
+## 硬件留痕信息
+
+|                | Windows系统 | 参考命令                                                     |
+| -------------- | ----------- | ------------------------------------------------------------ |
+| 私网IP地址     |             | ipconfig /all                                                |
+| 公网IP地址     |             | ipconfig /all                                                |
+| 网卡MAC地址    |             | ipconfig /all                                                |
+| 设备名         |             | ipconfig /all                                                |
+| 操作系统版本   |             | ver                                                          |
+| 硬盘序列号     |             | wmic path win32_physicalmedia get serialnumber               |
+| CPU序列号      |             | wmic CPU get ProcessorID                                     |
+| BIOS序列号     |             | wmic bios get serialnumber                                   |
+| 系统盘分区信息 |             | vol                                                          |
+|                |             |                                                              |
+|                | Linux系统   | 参考命令                                                     |
+| 私网IP地址     |             | ifconfig                                                     |
+| 公网IP地址     |             | ifconfig                                                     |
+| 网卡MAC地址    |             | ifconfig                                                     |
+| 设备名         |             | hostname                                                     |
+| 操作系统版本   |             | uname -a                                                     |
+| 硬盘序列号     |             | 无阵列： cat /proc/scsi/scsi sudo hdparm -I /dev/sda 有阵列： sudo lshw -c disk 需要安装lshw |
+| CPU序列号      |             | dmidecode -t 4 \|grep ID                                     |
+| BIOS序列号     |             | dmidecode -t 1\|grep Serial                                  |
