@@ -56,6 +56,8 @@ chmod -R 755 dir_name
   setfacl -Rm u:user1:rwX /path/to/directory
   ```
 
+  如果执行了上面的命令后，新创建的目录和文件，并不会满足上面的权限设置
+
 * 如果你有一个目录，希望给其它用户赋予该目录下**新建目录**和**新建文件**的操作权限
 
   ```bash
