@@ -44,7 +44,27 @@ chmod -R 755 dir_name
 
 参考：https://www.runoob.com/linux/linux-command-manual.html
 
+## setfacl精细化权限控制
 
+* 如果你有一个目录，希望给其它用户赋予该目录下**已有目录**和**已有文件**的操作权限
+
+  ```bash
+  # 这里-m是修改ACL规则的选项，u:xly:rwX指定了用户（u）xly对指定目录有读（r）和写（w）权限，大写的X意味着如果对象是一个目录或任何当前带有执行（x）权限的文件，则赋予执行权限。
+  setfacl -m u:user1:rwX /path/to/directory
+  
+  # -R选项使命令递归地应用到所有子目录和文件。
+  setfacl -Rm u:user1:rwX /path/to/directory
+  ```
+
+* 如果你有一个目录，希望给其它用户赋予该目录下**新建目录**和**新建文件**的操作权限
+
+  ```bash
+  # -Rm选项是递归地修改ACL设置。
+  # d:u:jxm:r指定为用户（u）jxm设置默认（d）ACL，其中包括读（r）权限。d就是default
+  # d: 表示这是一个默认ACL。对于目录，它会影响该目录中所有新创建的文件和子目录的ACL。现有的文件和目录不受影响。
+  setfacl -Rm d:u:user1:rwX /path/to/directory
+  setfacl -Rm d:u:user2:r /path/to/directory
+  ```
 
 ## 用户管理
 
