@@ -300,8 +300,6 @@ Codename:	Core
 
 
 
-## 
-
 ## OpenResty/Nginx
 
 ### 查看OpenResty版本
@@ -365,6 +363,95 @@ Nginx 的参数包括：
 ```bash
 ./sbin/nginx -c ./conf/nginx.conf
 ```
+
+
+
+## SELinux
+
+SELinux: Security-Enhanced Linux
+
+有时候使用Nginx作为Web服务器，访问网站的静态资源文件会出现权限问题，导致静态资源获取不到，网站样式错乱。
+
+如果确认了静态资源目录和文件权限都正常的话，这个问题大概率是由于服务器开启了SELinux引起的。
+
+- 首先，查看 SELinux 的状态：
+
+  ```bash
+  getenforce
+  ```
+
+- 如果返回 `Enforcing`，那么 SELinux 是启用的，并且可能是阻止访问的原因。
+
+- 您可以临时将 SELinux 设置为 `Permissive` 模式，以排除它是问题的原因（但请注意，这种模式下，会记录违反策略的行为，但不会强制阻止）：
+
+  ```bash
+  setenforce 0
+  ```
+
+- 然后，尝试再次访问文件。如果这次成功，那么问题确实由 SELinux 的策略引起。
+
+- 要为 `nginx` 访问静态文件设置正确的 SELinux 类型标签，可以对要访问的目录执行如下操作：
+
+  ```bash
+  sudo chcon -R -t httpd_sys_content_t /path/to/static/
+  ```
+
+- 请记得，完成测试后重新启用 SELinux：
+
+  ```
+  setenforce 1
+  ```
+
+**注意**： chcon命令修改的SELinux权限在机器重启会失效，要持久化保存，需要使用 `semanage fcontext` 命令来管理文件上下文的默认规则，并使用 `restorecon` 命令应用这些更改。
+
+### 1. 使用 `semanage fcontext` 添加或修改规则
+
+首先，确认已经安装了 `policycoreutils-python-utils` 包，这个包通常包含了 `semanage` 命令。如果没有，可以通过您的发行版的包管理器安装它。以 CentOS/RHEL 为例：
+
+```bash
+sudo yum install policycoreutils-python-utils
+```
+
+或者在 Fedora 上：
+
+```bash
+sudo dnf install policycoreutils-python-utils
+```
+
+接下来，添加一个新的规则，以指定目标路径的正确的 SELinux 类型 (`httpd_sys_content_t`)。如果您想要更改 `/path/to/your/web/content` 目录及其子目录中所有文件的类型，请运行：
+
+```bash
+sudo semanage fcontext -a -t httpd_sys_content_t "/path/to/your/web/content(/.*)?"
+```
+
+这个命令告诉 SELinux：“为 `/path/to/your/web/content` 以及其下所有子目录和文件添加一个规则，使它们的默认类型为 `httpd_sys_content_t`。”
+
+正则表达式 `(/.*)?` 确保规则应用于目录本身以及目录下的所有内容。
+
+### 2. 使用 `restorecon` 应用更改
+
+在添加或修改了文件的 SELinux 类型规则后，您需要使用 `restorecon` 命令来实际应用这些更改。为了递归地（即包括所有子目录和文件）应用更改，请运行：
+
+```bash
+sudo restorecon -Rv /path/to/your/web/content
+```
+
+选项说明：
+
+- `-R` 或 `--recursive`：递归地为所有对象应用指定的更改。
+- `-v` 或 `--verbose`：在更改每个文件的上下文时输出详情。
+
+执行这条命令后，`/path/to/your/web/content` 目录及其子目录和文件的 SELinux 上下文类型将被更新为 `httpd_sys_content_t`，应用了您通过 `semanage fcontext` 命令所设定的规则。
+
+### 注意
+
+- **确保路径正确**：在使用上述命令时，请确保把 `/path/to/your/web/content` 替换为您实际想要更改 SELinux 上下文的具体路径。
+- **权限**：运行这些命令需要管理员或 root 权限。
+- **重启服务**：在更改完文件的 SELinux 上下文后，您可能需要重启 Web 服务器，例如 Nginx 或 Apache，来确保更改生效。
+
+通过上述步骤，您就可以永久地为文件或目录设置 SELinux 上下文，从而允许 Web 服务器安全地访问这些内容。
+
+https://megamorf.gitlab.io/2020/06/10/troubleshoot-nginx-access-forbidden-error-caused-by-selinux/
 
 
 
