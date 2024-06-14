@@ -64,9 +64,20 @@ chmod -R 755 dir_name
   # -Rm选项是递归地修改ACL设置。
   # d:u:jxm:r指定为用户（u）jxm设置默认（d）ACL，其中包括读（r）权限。d就是default
   # d: 表示这是一个默认ACL。对于目录，它会影响该目录中所有新创建的文件和子目录的ACL。现有的文件和目录不受影响。
+  # 这里的X权限表示只对目录应用执行权限，表示用户可以进入该目录，并不会给文件赋予执行权限
   setfacl -Rm d:u:user1:rwX /path/to/directory
   setfacl -Rm d:u:user2:r /path/to/directory
   ```
+
+* **注意**：执行`setfacl -m u:user1:rwX /path/to/directory`，只修改用户对directory这个子目录的权限，并不会改变用户对/path目录和/path/to目录的权限。操作三部曲：
+
+  ```bash
+  setfacl -m u:user1:x /path
+  setfacl -m u:user1:x /path/to
+  setfacl -Rm u:user1:rwX /path/to/directory
+  ```
+
+  `X`权限是一个特殊标记，仅用于`chmod`或`setfacl`命令的递归 (`-R`) 操作中。它表示只为目录设置执行权限，而不改变已有文件的执行权限。
 
 ## 用户管理
 
