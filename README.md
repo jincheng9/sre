@@ -72,8 +72,8 @@ chmod -R 755 dir_name
 * **注意**：执行`setfacl -m u:user1:rwX /path/to/directory`，只修改用户对directory这个子目录的权限，并不会改变用户对/path目录和/path/to目录的权限。操作三部曲：
 
   ```bash
-  setfacl -m u:user1:x /path
-  setfacl -m u:user1:x /path/to
+  setfacl -m u:user1:rx /path
+  setfacl -m u:user1:rx /path/to
   setfacl -Rm u:user1:rwX /path/to/directory
   ```
 
