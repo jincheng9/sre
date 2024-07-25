@@ -75,8 +75,9 @@ chmod -R 755 dir_name
   setfacl -m u:user1:rx /path
   setfacl -m u:user1:rx /path/to
   setfacl -Rm u:user1:rwX /path/to/directory
+  setfacl -Rm d:u:user1:rwX /path/to/directory
   ```
-
+  
   `X`权限是一个特殊标记，仅用于`chmod`或`setfacl`命令的递归 (`-R`) 操作中。它表示只为目录设置执行权限，而不改变已有文件的执行权限。
 
 ## 用户管理
