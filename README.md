@@ -80,6 +80,17 @@ chmod -R 755 dir_name
   
   `X`权限是一个特殊标记，仅用于`chmod`或`setfacl`命令的递归 (`-R`) 操作中。它表示只为目录设置执行权限，而不改变已有文件的执行权限。
 
+* 取消权限
+
+  ```bash
+  setfacl -x u:user1 /path/to/directory # 移除user1用户对/path/to/directory已有目录和文件的权限
+  setfacl -x d:u:user1 /path/to/directory # 移除user1用户对/path/to/directory的默认权限
+  # 移除文件或目录上的所有访问控制列表（ACL）条目，将其恢复到标准的文件权限系统
+  setfacl -b /path/to/directory 
+  ```
+
+  
+
 ## 用户管理
 
 ```bash
