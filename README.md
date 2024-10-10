@@ -85,11 +85,14 @@ chmod -R 755 dir_name
   ```bash
   setfacl -x u:user1 /path/to/directory # 移除user1用户对/path/to/directory已有目录和文件的权限
   setfacl -x d:u:user1 /path/to/directory # 移除user1用户对/path/to/directory的默认权限
+  setfacl -Rx u:user1 /path/to/directory # 递归移除user1用户对/path/to/directory目录及其子目录和文件的权限
+  setfacl -Rx d:u:user1 /path/to/directory # 递归移除user1用户对/path/to/directory目录及其子目录和文件的默认权限
   # 移除文件或目录上的所有访问控制列表（ACL）条目，将其恢复到标准的文件权限系统
   setfacl -b /path/to/directory 
   ```
 
-  
+
+* **注意**：从其它目录拷贝文件到
 
 ## 用户管理
 
