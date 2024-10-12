@@ -539,6 +539,16 @@ https://install.appcenter.ms/orgs/rdmacios-k2vy/apps/microsoft-remote-desktop-fo
 
 
 
+## Windows命令
+
+* 查找Windows指定路径下的进程
+
+  ```bat
+  wmic process get ProcessID,ExecutablePath | findstr /i "C:\Program\ Files\Tencent\QQNT\QQ.exe"
+  ```
+
+  路径参数里如果有**空格**，空格前面要加`\`来进行转移。
+
 ## MySQL操作
 
 * 机器上安装mysql client
@@ -598,6 +608,40 @@ https://install.appcenter.ms/orgs/rdmacios-k2vy/apps/microsoft-remote-desktop-fo
 
   ```bash
   curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun
+  ```
+
+
+* 查看现有容器
+
+  ```bash
+  docker ps
+  ```
+
+* 进入Docker容器
+
+  ```bash
+  docker exec -it container_id bash
+  ```
+
+  在这个命令中：
+
+  - `-i` 选项表示以交互模式运行命令，确保你可以输入命令；
+  - `-t` 选项分配一个伪终端，这对于保持输出格式正确很有帮助；
+  - `container_id` 应替换为你的容器ID或名称；
+  - `bash` 是你希望在容器内运行以获取交互式shell的命令。如果容器中没有bash，你可以尝试使用`sh`或其他可用的shell程序，比如：`docker exec -it <容器ID或名称> sh`。
+
+* 宿主机和容器之间文件拷贝
+
+  ```bash
+  docker cp <容器名或ID>:<容器内文件的路径> <要复制到的宿主机的目标路径>
+  docker cp my_container:/data/config.json /backup/config_backup.json
+  
+  docker cp <宿主机文件路径> <容器ID或名称>:<容器内文件路径>
+  # 假设你有一个文件叫做example.txt，位于宿主机的/home/user/目录下，你想要将这个文件拷贝到名为mycontainer的容器的/usr/src/app目录下。那么你可以使用以下命令：
+  docker cp /home/user/example.txt mycontainer:/usr/src/app/example.txt
+  # 如果你想要将整个目录（假设目录名为mydir）从宿主机拷贝到容器中，你可以这样做：
+  docker cp /home/user/mydir mycontainer:/usr/src/app/
+  
   ```
 
   
