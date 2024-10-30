@@ -197,6 +197,16 @@ rsync error: unexplained error (code 255) at io.c(226) [sender=3.1.2]
 
 
 
+## scp文件传输
+
+```bash
+## 传输本机文件到目标机器192.168.10.12的/target_machine/path目录
+## 要把本机的ssh key加到目标机器的username用户下的.ssh/authorized_keys里
+scp -r /path/to/local/directory username@192.168.10.12:/target_machine/path
+```
+
+
+
 ## 网络盘挂载
 
 场景：把IP为192.168.10.214的Linux服务器的/home/web/share挂载到本机的/home/test目录
@@ -526,6 +536,13 @@ $ git push git@repo_B:xx.git --tags
 ```
 
 * https://blog.csdn.net/anniaxie/article/details/124122763
+
+## 放弃本地修改
+
+```bash
+## git pull的时候提示本地有未提交的修改，可以执行以下命令放弃本地修改
+git checkout -- /path/to/file
+```
 
 
 
