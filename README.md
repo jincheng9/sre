@@ -400,7 +400,65 @@ Nginx 的参数包括：
 ./sbin/nginx -c ./conf/nginx.conf
 ```
 
+## Nginx加入到systemd管理
 
+### 1. 创建 systemd 服务文件
+
+如果 OpenResty 安装时没有自动生成 `systemd` 服务文件，您需要手动创建一个。通常，这个服务文件应该放在 `/etc/systemd/system/` 目录下，并以 `.service` 结尾。如果已经存在，您可以跳过这一步，直接到启用步骤。
+
+1. 打开一个文本编辑器来创建服务文件：
+
+   ```bash
+   sudo vim /etc/systemd/system/nginx.service
+   ```
+
+2. 将以下内容添加到 `nginx.service` 文件中（确保根据您的 OpenResty 安装调整 `ExecStart` 和 `ExecReload` 中的路径）：
+
+   ```ini
+   [Unit]
+   Description=The NGINX HTTP and reverse proxy server
+   After=network.target
+   
+   [Service]
+   Type=forking
+   ExecStart=/usr/local/openresty/nginx/sbin/nginx -c /usr/local/openresty/nginx/conf/nginx.conf
+   ExecReload=/usr/local/openresty/nginx/sbin/nginx -s reload
+   ExecStop=/usr/local/openresty/nginx/sbin/nginx -s quit
+   
+   [Install]
+   WantedBy=multi-user.target
+   ```
+
+   确保将 `/usr/local/openresty/nginx/sbin/nginx` 和 `/usr/local/openresty/nginx/conf/nginx.conf` 替换为您实际的 OpenResty Nginx 执行程序和配置文件的路径。
+
+### 2. 启用服务
+
+创建服务文件后，您需要启用服务以便在开机时自动启动。
+
+1. 重新加载 `systemd` 以识别新的或更改过的服务文件：
+
+   ```bash
+   sudo systemctl daemon-reload
+   ```
+
+2. 启用 Nginx 服务：
+
+   ```bash
+   sudo systemctl enable nginx ## 设置ngin开机自启动
+   sudo systemctl is-enabled nginx ## 查看nginx是否设置了开机自启动
+   ```
+
+   这会将 nginx 服务设置为开机自启动。
+
+3. 日常运维
+
+   ```bash
+   sudo systemctl status nginx
+   sudo systemctl restart nginx
+   sudo systemctl stop nginx
+   ```
+
+   
 
 ## SELinux
 
