@@ -9,6 +9,7 @@
 * [Mac电脑相关](#Mac)
 * [MySQL操作](#MySQL操作)
 * [Docker操作](#Docker)
+* [Windows运维](#Windows)
 * [其它杂项](./other/readme.md)
 
 # Linux常用命令
@@ -614,7 +615,7 @@ https://install.appcenter.ms/orgs/rdmacios-k2vy/apps/microsoft-remote-desktop-fo
 
 
 
-## Windows命令
+# Windows命令
 
 * 查找Windows指定路径下的进程
 
@@ -623,7 +624,27 @@ https://install.appcenter.ms/orgs/rdmacios-k2vy/apps/microsoft-remote-desktop-fo
   ```
 
   路径参数里如果有**空格**，空格前面要加`\`来进行转移。
-
+* 根据进程名查找进程ID
+  ```bat
+  tasklist | findstr process_xxx
+  ```
+* 根据进程ID查找exe进程所在的目录
+  ```bat
+  wmic process where processid="PID" get ExecutablePath
+  ```
+* kill相关进程
+  ```bat
+  # 根据进程名kill
+  taskkill /F /IM "process_name"
+  taskkill /F /T /IM "process_name"
+  ```
+  ```bat
+  # 根据进程ID来kill
+  taskkill /F /PID pid_number
+  taskkill /F /T /PID pid_number
+  ```
+  /F表示Force，强制终止；/T表示Tree，kill该进程及其子进程
+  
 ## MySQL操作
 
 * 机器上安装mysql client
@@ -718,7 +739,6 @@ https://install.appcenter.ms/orgs/rdmacios-k2vy/apps/microsoft-remote-desktop-fo
   docker cp /home/user/mydir mycontainer:/usr/src/app/
   
   ```
-
   
 
 ## CTP硬件留痕信息
