@@ -615,7 +615,7 @@ https://install.appcenter.ms/orgs/rdmacios-k2vy/apps/microsoft-remote-desktop-fo
 
 
 
-# Windows命令
+# Windows
 
 * 查找Windows指定路径下的进程
 
@@ -644,7 +644,7 @@ https://install.appcenter.ms/orgs/rdmacios-k2vy/apps/microsoft-remote-desktop-fo
   taskkill /F /T /PID pid_number
   ```
   /F表示Force，强制终止；/T表示Tree，kill该进程及其子进程
-  
+
 ## MySQL操作
 
 * 机器上安装mysql client
