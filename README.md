@@ -645,6 +645,13 @@ https://install.appcenter.ms/orgs/rdmacios-k2vy/apps/microsoft-remote-desktop-fo
   ```
   /F表示Force，强制终止；/T表示Tree，kill该进程及其子进程
 
+* 给windows用户登录用户名和显示用户名
+
+  ```bat
+  计算机管理->本地用户和组->修改Name和Full name(Name是登录用户名，Full Name是欢迎界面显示的名字)
+  任务管理器->用户->注销用户
+  控制面板->用户账户
+
 ## MySQL操作
 
 * 机器上安装mysql client
