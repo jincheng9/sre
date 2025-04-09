@@ -315,14 +315,52 @@ du -hs * | sort -hr | head
 
 ## 查看Linux操作系统版本
 
-* 方法1：centos系统，执行以下命令：
+* 方法1：`hostnamectl` 命令不仅可以显示你的主机信息，还可以显示操作系统相关的详细信息，包括操作系统名称和版本。
 
 ```bash
-$ cat /etc/centos-release
-CentOS Linux release 7.9.2009 (Core)
+[xx@machine]$ hostnamectl
+ Static hostname: machine-super
+       Icon name: computer-server
+         Chassis: server 🖳
+      Machine ID: 9fcfa28b74c04b3387bbe7c2d2180486
+         Boot ID: 7067fbf492414f6791f9a85ed1c0f4ef
+Operating System: Rocky Linux 9.3 (Blue Onyx)
+     CPE OS Name: cpe:/o:rocky:rocky:9::baseos
+          Kernel: Linux 5.14.0-362.8.1.el9_3.x86_64
+    Architecture: x86-64
+ Hardware Vendor: AMAX
+  Hardware Model: AS -4124GS-TNR
+Firmware Version: 2.4
 ```
 
-* 方法2：命令：`lsb_release -a`。
+
+
+* 方法2：`cat /etc/*release` 这个命令会显示包含“release”的所有文件内容，其中通常包括了发行版和版本号等信息。
+
+```bash
+NAME="Rocky Linux"
+VERSION="9.3 (Blue Onyx)"
+ID="rocky"
+ID_LIKE="rhel centos fedora"
+VERSION_ID="9.3"
+PLATFORM_ID="platform:el9"
+PRETTY_NAME="Rocky Linux 9.3 (Blue Onyx)"
+ANSI_COLOR="0;32"
+LOGO="fedora-logo-icon"
+CPE_NAME="cpe:/o:rocky:rocky:9::baseos"
+HOME_URL="https://rockylinux.org/"
+BUG_REPORT_URL="https://bugs.rockylinux.org/"
+SUPPORT_END="2032-05-31"
+ROCKY_SUPPORT_PRODUCT="Rocky-Linux-9"
+ROCKY_SUPPORT_PRODUCT_VERSION="9.3"
+REDHAT_SUPPORT_PRODUCT="Rocky Linux"
+REDHAT_SUPPORT_PRODUCT_VERSION="9.3"
+Rocky Linux release 9.3 (Blue Onyx)
+Rocky Linux release 9.3 (Blue Onyx)
+Rocky Linux release 9.3 (Blue Onyx)
+```
+
+* 方法3：命令：`lsb_release -a`。
 
 ```bash
 # lsb_release -a
