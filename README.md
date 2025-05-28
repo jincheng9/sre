@@ -231,6 +231,68 @@ yum install sshfs
 
 
 
+## tmux
+
+### 创建新的tmux session
+
+```bash
+tmux new-session -s session_name
+```
+
+### 列出当前所有session
+
+```bash
+$ tmux ls
+0: 1 windows (created Wed May 28 18:08:55 2025)
+test: 2 windows (created Wed May 28 18:15:53 2025)
+
+0和test是session的名称，1 windows表示这个session下面只有1个窗口
+```
+
+### 进入当前session
+
+```bash
+tmux a -t session_name # a表示attach
+```
+
+###  退出当前session
+
+```bash
+键盘输入ctrl+b，然后按d退出，d表示detach分离
+```
+
+### session里创建新窗口
+
+```bash
+键盘输入ctrl+b，然后输入c
+```
+
+### session里给一个窗口该名称
+
+```bash
+键盘输入ctrl+b，然后输入逗号, 在输入新的名字后按回车即可
+```
+
+### session里选择某个窗口
+
+```bash
+键盘输入ctrl+b，session里的每个窗口有个0开始的数字编号，输入对应窗口数字即可切换到对应窗口
+```
+
+### session里关闭某个窗口
+
+```bash
+键盘输入ctrl+b，然后选择对应窗口，在命令行上输入exit即可
+```
+
+### 关闭所有session
+
+```bash
+tmux kill-server # 会删除所有tmux session，谨慎操作
+```
+
+
+
 ## 防火墙
 
 **注意**：修改了防火墙配置后，需要重启防火墙
