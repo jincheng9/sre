@@ -267,7 +267,7 @@ tmux a -t session_name # a表示attach
 键盘输入ctrl+b，然后输入c
 ```
 
-### session里给一个窗口该名称
+### session里给一个窗口修改名称
 
 ```bash
 键盘输入ctrl+b，然后输入逗号, 在输入新的名字后按回车即可
